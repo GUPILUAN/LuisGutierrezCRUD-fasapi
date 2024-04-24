@@ -10,7 +10,7 @@ router : APIRouter = APIRouter()
 async def createUsuario(usuario : Usuario) -> Usuario:
     existingUser : Usuario | None = await collection.find_one({"email" : usuario.email})
     if existingUser:
-        raise HTTPException(status_code = 208, detail = "El email ya existe")
+        raise HTTPException(status_code = 226, detail = "El email ya existe")
     result : results.InsertOneResult = await collection.insert_one(usuario.model_dump())
     usuario._id = str(result.inserted_id)
     return usuario
@@ -28,7 +28,7 @@ async def readUsuarios() -> list[Usuario]:
 async def updateUsuario(email : str, userToUpdate : Usuario) -> Usuario:
     updatedUser : Usuario | None = await collection.find_one_and_update({"email" : email}, {"$set" : userToUpdate.model_dump()})
     if not updatedUser:
-        raise HTTPException(status_code = 404, detail = "El usuario no existe")
+        raise HTTPException(status_code = 304, detail = "El usuario no existe")
     return updatedUser
 
 #Obtiene un usuario por email
