@@ -8,7 +8,7 @@ router : APIRouter = APIRouter()
 #Crea un libro
 @router.post('/', response_description= "Crear nuevo libro", response_model= Libro)
 async def createLibro(libro : Libro) -> Libro:
-    existingLibro : Libro | None = await collection.find_one({"isbn" : libro.autor})
+    existingLibro : Libro | None = await collection.find_one({"isbn" : libro.isbn})
     if existingLibro:
         raise HTTPException(status_code= 226, detail= "El isbn ya existe")
     result : results.InsertOneResult = await collection.insert_one(libro.model_dump())
