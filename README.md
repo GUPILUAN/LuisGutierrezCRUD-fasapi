@@ -19,13 +19,13 @@ Este es un ejemplo de una API RESTful para administrar una biblioteca de libros,
 1. Clona este repositorio:
 
     ```bash
-    git clone https://github.com/GUPILUAN/fastapi-libros-api.git
+    git clone https://github.com/GUPILUAN/LuisGutierrezCRUD-fastapi.git
     ```
 
 2. Ingresa al directorio del proyecto:
 
     ```bash
-    cd fastapi-libros-api
+    cd LuisGutierrezCRUD-fastapi
     ```
 
 3. Instala las dependencias:
